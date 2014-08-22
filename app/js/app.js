@@ -12,7 +12,6 @@
 angular.module('studyaAPP', [
     'ngCookies',
     'ngResource',
-    'ngSanitize',
     'ngRoute'
 ])
     .config(function ($routeProvider, $locationProvider, $httpProvider) {
