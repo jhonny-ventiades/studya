@@ -1,0 +1,64 @@
+<header class="bar bar-nav" ng-init="loadFacultys()">
+    <button id="buttonReturn" class="btn btn-link btn-nav pull-left" ng-click="showmenu()">
+        <span class="icon icon-left-nav"></span>
+        {{option}}
+    </button>
+    <h1 class="title text-center">{{title}}</h1>
+</header>
+
+
+<div class="content">
+    <div id="menu" class="page center">
+        <div id="wrapperMenu">
+            <div class="scroller">
+                <div id="menuList" class="card">
+                    <div  class="table-view" ng-repeat="faculty in facultys">
+                        <div class="table-view-cell table-view-divider" >{{faculty.nameFaculty}}</div>
+                        <div ng-repeat="career in faculty.career" ng-click="selectedCareer(faculty._id,career._id)" class="table-view-cell">
+                            {{career.nameCareer}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="body" class="page right">
+        <div id="wrapper">
+            <div class="scroller">
+                <div id="bodyList" class="card">
+                    <div  class="table-view" ng-repeat="c in course">
+                        <div class="table-view-cell table-view-divider" >{{c.nameCourse}}</div>
+                        <div ng-repeat="subject in c.subjects" ng-click="selectSubject(subject.nameSubject,subject.files)" class="table-view-cell">
+                            {{subject.nameSubject + '  -  ' + subject.professor}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="menuDownload" class="page right menu" >
+        <div id="wrapperDownload">
+            <div class="scroller">
+                <div id="downloadList" class=" ">
+                    <div>
+                        <a class="icon icon-close pull-left" ng-click="closeMenu()"></a>
+                        <h3 class="menu-item">Archivos de {{titleSubject}}</h3>
+                    </div>
+                    <ul class="table-view card">
+                        <li class="table-view-cell media " ng-repeat="file in files" class=" menu-item">
+                            <a class="navigate-right" ng-click="redirect(file.link)">
+                                <span class="media-object pull-left icon icon-download"></span>
+                                <div class="media-body">
+                                    {{file.name }}
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
