@@ -63,9 +63,12 @@ angular.module('studyaAPP')
         };
 
         $scope.selectSubject = function(nameSubject,files){
-            $("#menuDownload").addClass('transition');
-            $("#menuDownload").removeClass('right');
-            $("#menuDownload").addClass('menu-right');
+            //$("#menuDownload").addClass('transition');
+            //$("#menuDownload").removeClass('position-right');
+            //$("#menuDownload").addClass('position-center');
+            $("#menuDownload").addClass('show');
+            $("#menuDownload").removeClass('hidden');
+
             $scope.title = "DOWNLOAD";console.info(nameSubject);
             $scope.titleSubject = nameSubject;
             $scope.files = files;
@@ -75,9 +78,11 @@ angular.module('studyaAPP')
         };
 
         $scope.closeMenu = function(){
-            $("#menuDownload").removeClass('transition');
-            $("#menuDownload").addClass('right');
-            $("#menuDownload").removeClass('menu-right');
+            //$("#menuDownload").removeClass('transition');
+            //$("#menuDownload").addClass('menu-right');
+            //$("#menuDownload").removeClass('menu-center');
+            $("#menuDownload").addClass('hidden');
+            $("#menuDownload").removeClass('show');
             $scope.title = "MATERIAS";
             $scope.titleSubject = "";
             $scope.files = [];

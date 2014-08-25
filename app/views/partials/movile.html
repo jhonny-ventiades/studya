@@ -1,7 +1,6 @@
 
 <nav class="navbar navbar-default" role="navigation"  ng-init="loadFacultys()">
     <div class="container-fluid">
-
         <h4 class="navbar-text">{{title}}</h4>
         <button id="buttonReturn" type="button" class="btn btn-default navbar-btn"  ng-click="showmenu()">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -10,58 +9,48 @@
     </div>
 </nav>
 
-<div class="col-xs-12 body" >
+<div class="col-xs-12" >
     <div id="menu" class="page center">
-        <div id="wrapperMenu">
-            <div class="">
-                <div id="menuList" class="list-group">
-                    <div  class="" ng-repeat="faculty in facultys">
-                        <div class="list-group-item active" >{{faculty.nameFaculty}}</div>
-                        <div ng-repeat="career in faculty.career" ng-click="selectedCareer(faculty._id,career._id)" class="list-group-item">
-                            {{career.nameCareer}}
+        <div id="menuList" class="list-group">
+            <div  class="" ng-repeat="faculty in facultys">
+                <div class="list-group-item active" >{{faculty.nameFaculty}}</div>
+                <div ng-repeat="career in faculty.career" ng-click="selectedCareer(faculty._id,career._id)" class="list-group-item">
+                    {{career.nameCareer}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="body" class="page right" >
+        <div id="bodyList" class="list-group">
+            <div  class="table-view" ng-repeat="c in course">
+                <div class="list-group-item active" >{{c.nameCourse}}</div>
+                <div ng-repeat="subject in c.subjects" ng-click="selectSubject(subject.nameSubject,subject.files)" class="list-group-item">
+                    {{subject.nameSubject + '  -  ' + subject.professor}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="menuDownload" class="menu hidden">
+        <div class="col-xs-12">
+            <button type="button" class="close" ng-click="closeMenu()">
+                <span aria-hidden="true">&times;</span><span class="sr-only">
+                </span>
+            </button>
+            <h3 class="menu-item">Archivos de {{titleSubject}}</h3>
+        </div>
+        <div class="col-xs-12">
+            <ul>
+                <li class="menu-item" ng-repeat="file in files" >
+                    <a class="navigate-right" ng-click="redirect(file.link)">
+                        <span class="media-object pull-left icon icon-download"></span>
+                        <div class="media-body">
+                            {{file.name }}
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-
-    <div id="body" class="page right">
-        <div id="wrapper">
-            <div class="scroller">
-                <div id="bodyList" class="list-group">
-                    <div  class="table-view" ng-repeat="c in course">
-                        <div class="list-group-item active" >{{c.nameCourse}}</div>
-                        <div ng-repeat="subject in c.subjects" ng-click="selectSubject(subject.nameSubject,subject.files)" class="list-group-item">
-                            {{subject.nameSubject + '  -  ' + subject.professor}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="menuDownload" class="page right menu" >
-        <div id="wrapperDownload">
-            <div class="scroller">
-                <div id="downloadList" class=" ">
-                    <div>
-                        <a class="icon icon-close pull-left" ng-click="closeMenu()"></a>
-                        <h3 class="menu-item">Archivos de {{titleSubject}}</h3>
-                    </div>
-                    <ul class="table-view card">
-                        <li class="table-view-cell media " ng-repeat="file in files" class=" menu-item">
-                            <a class="navigate-right" ng-click="redirect(file.link)">
-                                <span class="media-object pull-left icon icon-download"></span>
-                                <div class="media-body">
-                                    {{file.name }}
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
