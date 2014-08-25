@@ -1,20 +1,23 @@
-<header class="bar bar-nav" ng-init="loadFacultys()">
-    <button id="buttonReturn" class="btn btn-link btn-nav pull-left" ng-click="showmenu()">
-        <span class="icon icon-left-nav"></span>
-        {{option}}
-    </button>
-    <h1 class="title text-center">{{title}}</h1>
-</header>
 
+<nav class="navbar navbar-default" role="navigation"  ng-init="loadFacultys()">
+    <div class="container-fluid">
 
-<div class="content">
+        <h4 class="navbar-text">{{title}}</h4>
+        <button id="buttonReturn" type="button" class="btn btn-default navbar-btn"  ng-click="showmenu()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {{option}}
+        </button>
+    </div>
+</nav>
+
+<div class="col-xs-12 body" >
     <div id="menu" class="page center">
         <div id="wrapperMenu">
-            <div class="scroller">
-                <div id="menuList" class="card">
-                    <div  class="table-view" ng-repeat="faculty in facultys">
-                        <div class="table-view-cell table-view-divider" >{{faculty.nameFaculty}}</div>
-                        <div ng-repeat="career in faculty.career" ng-click="selectedCareer(faculty._id,career._id)" class="table-view-cell">
+            <div class="">
+                <div id="menuList" class="list-group">
+                    <div  class="" ng-repeat="faculty in facultys">
+                        <div class="list-group-item active" >{{faculty.nameFaculty}}</div>
+                        <div ng-repeat="career in faculty.career" ng-click="selectedCareer(faculty._id,career._id)" class="list-group-item">
                             {{career.nameCareer}}
                         </div>
                     </div>
@@ -26,10 +29,10 @@
     <div id="body" class="page right">
         <div id="wrapper">
             <div class="scroller">
-                <div id="bodyList" class="card">
+                <div id="bodyList" class="list-group">
                     <div  class="table-view" ng-repeat="c in course">
-                        <div class="table-view-cell table-view-divider" >{{c.nameCourse}}</div>
-                        <div ng-repeat="subject in c.subjects" ng-click="selectSubject(subject.nameSubject,subject.files)" class="table-view-cell">
+                        <div class="list-group-item active" >{{c.nameCourse}}</div>
+                        <div ng-repeat="subject in c.subjects" ng-click="selectSubject(subject.nameSubject,subject.files)" class="list-group-item">
                             {{subject.nameSubject + '  -  ' + subject.professor}}
                         </div>
                     </div>
