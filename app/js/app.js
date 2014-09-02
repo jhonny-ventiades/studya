@@ -14,15 +14,15 @@ angular.module('studyaAPP', [
     'ngResource',
     'ngRoute'
 ])
-    .config(function ($routeProvider, $locationProvider, $httpProvider) {
+    .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/main.html',
                 controller: ''
             })
-            .when('/mobile', {
-                templateUrl: 'partials/movile.html',
-                controller: 'movileCtrl'
+            .when('/faculty/career/teachers/:career', {
+                templateUrl: '/partials/teachers.html',
+                controller: 'teacherCtrl'
             })
             .otherwise({
                 redirectTo: '/'
