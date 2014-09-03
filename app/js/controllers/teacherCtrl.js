@@ -20,12 +20,16 @@ angular.module('studyaAPP')
         };
 
         $scope.loadTeachers = function(){
-            var career = $routeParams.career;
-            Teachers.getAll({id:career}).$promise.then(function(data){
+            var career = $location.search();//$routeParams.career;
+
+            Teachers.getAll({id:career.career}).$promise.then(function(data){
                 angular.copy(data,$scope.teachers);
                 if($scope.teachers.length == 0) {
                     $("#alertNoTeachers").addClass("show");
                     $("#alertNoTeachers").removeClass("hidden");
+                    $("#search").addClass("hidden");
+                    $("#search").removeClass("show");
+
                 }
 
             });

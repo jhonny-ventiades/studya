@@ -20,12 +20,12 @@ angular.module('studyaAPP', [
                 templateUrl: 'partials/main.html',
                 controller: ''
             })
-            .when('/faculty/career/teachers/:career', {
+            .when('/faculty/teachers', {
                 templateUrl: '/partials/teachers.html',
                 controller: 'teacherCtrl'
             })
             .otherwise({
                 redirectTo: '/'
             });
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
     });
