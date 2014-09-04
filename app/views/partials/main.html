@@ -1,6 +1,23 @@
 
 <div class="col-xs-12 text-center">
-    <img src="./images/studya_logo.png"  class="img-rounded" alt="Responsive image" style="max-width: 80%; height: auto;" >
-    <p>Aplicación para la descarga de archivos</p>
-    <p class="text-center"><a class="btn btn-primary btn-lg" role="button" ng-href="#faculty/teachers?career=Administracion">Entrar</a></p>
+    <img src="./images/studia_intro.jpg"  class="img-rounded" alt="Responsive image" style="max-width: 40%; height: auto;" >
 </div>
+<div class="col-xs-12 ">
+    <hr width="100%">
+    <ul class="nav nav-pills nav-justified ">
+        <li ng-repeat="faculty in facultyes">
+            <a id="{{faculty.id}}" class="text-green"
+               ng-click="facultySelected(faculty.id, faculty.careers)">{{faculty.name}}</a>
+        </li>
+    </ul>
+    <hr width="100%">
+
+    <div id="listOfCareers" >
+        <ul class="nav nav-pills nav-justified ">
+            <li ng-repeat="career in careers">
+                <a class="text-blue" ng-href="/faculty/teachers?career={{career}}" >{{career}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

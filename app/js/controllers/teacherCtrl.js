@@ -12,8 +12,9 @@ angular.module('studyaAPP')
 
         $scope.teachers = [];
         $scope.files = [];
-        $scope.file="";
-        $scope.student={
+        $scope.file = "";
+        $scope.title = "";
+        $scope.student = {
             name:"",
             phoneNumber:"",
             cu:""
@@ -21,7 +22,7 @@ angular.module('studyaAPP')
 
         $scope.loadTeachers = function(){
             var career = $location.search();//$routeParams.career;
-
+            $scope.title = career.career;
             Teachers.getAll({id:career.career}).$promise.then(function(data){
                 angular.copy(data,$scope.teachers);
                 if($scope.teachers.length == 0) {

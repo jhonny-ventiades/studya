@@ -18,7 +18,7 @@ angular.module('studyaAPP', [
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/main.html',
-                controller: ''
+                controller: 'mainCtrl'
             })
             .when('/faculty/teachers', {
                 templateUrl: '/partials/teachers.html',
@@ -27,5 +27,5 @@ angular.module('studyaAPP', [
             .otherwise({
                 redirectTo: '/'
             });
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
     });

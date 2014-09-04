@@ -16,13 +16,21 @@ body{
 }
 
 .label-orange{
+    border: 3px solid #a53200 !important;
     background-color: #ff4e00 !important;
     color: #ffffff !important;
 }
 
 
 .label-blue{
+    border: 3px solid #004a95 !important;
     background-color: #0078ff !important;
+    color: #ffffff !important;
+}
+
+.label-green{
+    border: 3px solid #679b03 !important;
+    background-color: #a8ff00 !important;
     color: #ffffff !important;
 }
 
@@ -33,4 +41,32 @@ body{
 
 .text-red{
     color: #cb1111 !important;
+}
+
+.text-blue{
+    color: #0078ff !important;
+}
+
+.text-green{
+    color: #679b03 !important;
+}
+
+.background-green{
+    background-color: #a8ff00 !important;
+}
+
+.background-blue{
+    background-color: #0078ff !important;
+}
+
+.background-orange{
+    background-color: #ff4e00 !important;
+}
+
+.footer{
+    background-color: #f1f1f1 !important;
+    padding-top: 12px;
+}
+.design-footer{
+    min-height: 15px;
 }
