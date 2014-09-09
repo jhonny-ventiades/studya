@@ -18,3 +18,14 @@ angular.module('studyaAPP')
                 }
             });
     });
+
+
+angular.module('studyaAPP')
+    .factory('TeachersAll', function ($resource) {
+        return $resource('/api/teachers',
+            {}, { //parameters default
+                post: {
+                    method: 'POST'
+                }
+            });
+    });

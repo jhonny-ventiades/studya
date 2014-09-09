@@ -1,7 +1,112 @@
+<div class="page-header">
+    <h1>Panel de administraci&oacute;n <br><small>Registrar, subir archivos, listas</small></h1>
+</div>
 
-<form method="post" enctype="multipart/form-data" action="/subir">
-    <input type="text" name="nombre" />
-    <input type="file" name="miarchivo" />
-    <input type="submit"/>
-    
-</form>
+<div class="panel-group col-xs-12" id="accordion">
+    <div class="panel panel-primary">
+        <div class="panel-heading"  ng-click="showForm()">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" data-target="collapseOne">
+                    Insertar un nuevo docente
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <form role="form"  novalidate>
+                    <div class="form-group">
+                        <label for="name">Nombre del docente:</label>
+                        <input type="text" class="form-control" id="name" ng-model="teacher.name"
+                               placeholder="Ej.: Lic. Juan Perez" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="factulyToRegister">Facultad y carrera:</label>
+                        <div id="factulyToRegister">
+                            <label class="radio-inline"  ng-repeat="faculty in facultyes">
+                                <input type="radio" name="facutlyes"  ng-click="loadCareers(faculty.careers)"> {{faculty.name}}
+                            </label>
+                        </div>
+                        <select class="form-control"  ng-model="teacher.nameCareer" required>
+                            <option ng-repeat="career in careers" value="{{career}}">{{career}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nameSubject">Nombre de la materia:</label>
+                        <input type="text" class="form-control" id="nameSubject" ng-model="teacher.nameSubject"
+                               placeholder="Ej.: ENC210" required />
+                    </div>
+                    <button type="submit" class="btn label-green" ng-click="registerTeacher()">Registrar</button>
+                    <button type="button" class="btn btn-default" ng-click="reset()">Limpiar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12">
+
+    <!------------- title----------->
+    <div class="col-xs-12">
+        <h3>Agregar archivos</h3>
+        <hr width="100%">
+    </div>
+
+    <div class="col-xs-5">
+        <!------------- OPTIONS----------->
+        <div class="form-group">
+            <label for="factuly">Facultad y carrera:</label>
+            <div id="factuly">
+                <label class="radio-inline"  ng-repeat="faculty in facultyes">
+                    <input type="radio" name="facutlyes"  ng-click="loadCareers(faculty.careers)"> {{faculty.name}}
+                </label>
+            </div>
+            <select class="form-control" id="careers" ng-model="careerSelected" ng-change="loadTeachers()"required>
+                <option ng-repeat="career in careers" value="{{career}}">{{career}}</option>
+            </select>
+        </div>
+        <!-----------------------------------------------------Search--------------------------------------------->
+        <div id="search" class="col-xs-12 margin-top">
+            <div class="form-group ">
+                <div class="input-group">
+                    <span  class="input-group-addon glyphicon glyphicon-search"></span>
+                    <input type="text" id="searchBox" class="form-control" ng-model="filterTeachers" placeholder="Buscar Docente..."  />
+                </div>
+            </div>
+        </div>
+
+        <!-----------------------------LIST OF TEACHERS------------------>
+
+        <div id="alertNoTeachers" class="alert alert-warning hidden col-xs-12" role="alert"><b>Error!</b> Ningun docente registrado en esta carrera.</div>
+
+        <div class="list-group col-xs-12 ">
+            <a class="list-group-item"  id="{{teacher._id}}" ng-repeat="teacher in listOfTeachers | filter:filterTeachers" ng-click="selectTeacher(teacher)">
+                {{teacher.name}}
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-7">
+        <div id="uploadFiles" class="hidden" >
+            <h1 class="text-orange">{{teacherSelected.name}}</h1>
+
+            <form id="fileForm" role="form" novalidate method="post" enctype="multipart/form-data" action="/api/upload/file" target="_blank">
+                <input type="hidden" value="{{teacherSelected._id}}" name="_id"/>
+                <input type="hidden" value="{{teacherSelected.files}}" name="files"/>
+
+                <div class="form-group">
+                    <label >Seleccionar el archivo que se quiere subir:</label>
+                    <input type="file" name="miarchivo" class="form-control"  required />
+                </div>
+
+                <input type="submit" value="Enviar" class="btn label-green" ng-click="sendForm()"/>
+            </form>
+
+            <h4>Lista de archivos:</h4>
+            <ul>
+                <li ng-repeat="file in teacherSelected.files">
+                    {{file.nameFile}}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

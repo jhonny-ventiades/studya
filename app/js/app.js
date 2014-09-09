@@ -26,7 +26,7 @@ angular.module('studyaAPP', [
             })
             .when('/administrator', {
                 templateUrl: '/partials/admin.html',
-                controller: ''
+                controller: 'adminCtrl'
             })
             .otherwise({
                 redirectTo: '/'
